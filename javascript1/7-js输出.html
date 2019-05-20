@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--
+			作者：黄天才
+        	时间：2019-01-27
+        	描述：JavaScript 通常用于操作 HTML 元素。
+        	
+        	如需从 JavaScript 访问某个 HTML 元素，您可以使用 document.getElementById(id) 方法。
+        	请使用 "id" 属性来标识 HTML 元素：
+			
+			注意：JavaScript要放到页面代码的底部，这样就可以确保在<p>元素创建之后再执行脚本。
+				如果放在这里，先执行了脚本，再创建<p>元素，这样就操作不了HTML元素
+        -->
+		
+		
+	</head>
+	<body>
+		
+		<p id="demo">A Paragraph.</p>
+		
+		<script>
+			//JavaScript 由 web 浏览器来执行。
+			//在这种情况下，浏览器将访问 id="demo" 的 HTML 元素，并把它的内容（innerHTML）替换为 "My First JavaScript"。
+			document.getElementById("demo").innerHTML="MyFirstJavaSccript";	
+		</script>
+	
+	</body>
+</html>

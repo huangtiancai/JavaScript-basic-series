@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--
+        	在本例中，我们把一个 JavaScript 函数放置到 HTML 页面的 <head> 部分。该函数会在点击按钮时被调用：
+        -->
+		<script>
+			function myFuncton(){
+				document.getElementById("demo").innerHTML="My First JavaScript Function";
+			}
+		</script>
+	</head>
+	<body>
+		<!--
+        	作者：黄天才
+        	时间：2019-01-27
+        	描述：JS的实现:<head>中的 JavaScript
+        -->
+		<p id="demo">A Paragraph.</p>
+		<button type="button" onclick="myFuncton()">点击这里！</button>
+
+	</body>
+</html>
