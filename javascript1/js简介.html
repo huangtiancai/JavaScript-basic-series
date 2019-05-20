@@ -24,7 +24,7 @@
 
         <!--4.JavaScript：改变 HTML 图像-->
         <p>点击灯泡来点亮或熄灭这盏灯</p>
-        <img id="myimage" src="img/1.gif" onclick="changeImage()">
+        <img id="myimage" src="img/eg_bulboff.gif" onclick="changeImage()">
 
 		<script>
 			//1.JavaScript：对事件作出反应
@@ -41,10 +41,13 @@
            //本例会动态地改变 HTML <image> 的来源 (src)：
            function changeImage(){
                element = document.getElementById("myimage");
-               if(element.src.match("button")){
-                 element.src="img/2.gif";
+               alert(element);
+               alert(element.src);
+               alert(element.src.match("bulbon"));
+               if(element.src.match("bulbon")){
+                 element.src="img/eg_bulboff.gif";
                }else{
-                 element.src="img/1.gif";
+                 element.src="img/eg_bulbon.gif";
                }
            }
 
