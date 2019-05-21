@@ -29,13 +29,13 @@ myImage.onclick = function(){
     }
 }
 
-
+//第一次访问网页时，将询问用户名并发出一段个性化的信息。并可随时点击按钮来改变用户名 
 
 //setHeading 函数将根据 name 参数将页面标题设置为个性化的欢迎信息
 //函数的实现中首先将 h1 元素的引用保存在 myHeading 变量中，然后设置 myHeading 的 textContent 属性。
 function setHeading(name) {
     let myHeading = document.querySelector('h1');
-    myHeading.textContent = 'Mozilla 酷毙了，' + name + '！';
+    myHeading.textContent = '欢迎你，' + name + '！';
   }
   
 //setUserName 函数将为页面设置用户名信息
@@ -45,7 +45,7 @@ function setHeading(name) {
 //4.最后调用上述的 setHeading 函数来个性化欢迎信息。
 function setUserName() {
     let myName = prompt('请输入你的名字');
-    localStorage.setItem('name', myName);
+    localStorage.setItem('name', myName);//用户名是保存在 localStorage 里的，网站关闭后也不会丢失，所以重新打开浏览器时所设置的名字信息将依然存在
     setHeading(myName);
 } 
 
@@ -54,12 +54,18 @@ function setUserName() {
 //尝试取得浏览器中保存的 'name' 数据项
 let storedName = localStorage.getItem('name');
 //if ... else 块是初始化代码，因为它在页面初次读取时进行构造工作
-//条件 !storedName == true   在 storedName 不存在时值为真
+//条件 !storedName == true   即在 storedName 不存在时值为真，将调用 setUserName 函数
+//条件 !storedName == false  即在 storedName 不存在时值为假（storedName存在），以 storedName 为参数调用 setHeading 函数
+
+//此条件语句块可描述为：若 'name' 数据项不存在，则由用户输入用户名，若存在则直接将 'name' 中保存的用户名显示到个性化欢迎信息中
 if(!storedName) {
     setUserName();
 } else {
     setHeading(storedName);
 }
 //切换用户
+//将页面中 button 元素的引用保存在 myButton 中
+//将这个按钮的 onclick 事件处理器设为 setUserName函数。
+//将这个按钮的 onclick 事件处理器设为 setUserName函数。
 let myButton = document.querySelector('button'); 
 myButton.onclick = setUserName;
