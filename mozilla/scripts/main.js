@@ -66,6 +66,5 @@ if(!storedName) {
 //切换用户
 //将页面中 button 元素的引用保存在 myButton 中
 //将这个按钮的 onclick 事件处理器设为 setUserName函数。
-//将这个按钮的 onclick 事件处理器设为 setUserName函数。
 let myButton = document.querySelector('button'); 
 myButton.onclick = setUserName;
