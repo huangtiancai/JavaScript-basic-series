@@ -11,7 +11,7 @@
         -->
 
 	</head>
-	<body>		
+	<body>	
         <!--2.JavaScript：对事件作出反应-->
         <p>JavaScript 能够对事件作出反应。比如对按钮的点击：</p>
         <button type="button" onclick="alert('welcome!');">点击这里！</button>
@@ -54,9 +54,9 @@
            //本例会动态地改变 HTML <image> 的来源 (src)：
            function changeImage(){
                element = document.getElementById("myimage");
-               alert(element);//[object HTMLImageElement]
-               alert(element.src);//图片的绝对路径
-               alert(element.src.match("bulbon"));//null   bulbon
+               //alert(element);//[object HTMLImageElement]
+               //alert(element.src);//图片的绝对路径
+               //alert(element.src.match("bulbon"));//null   bulbon
                if(element.src.match("bulbon")){
                  element.src="img/eg_bulboff.gif";
                }else{
@@ -78,12 +78,6 @@
                }
 
            }
-
-
-
-            
-
-
 
 		</script>
         
