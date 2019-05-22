@@ -85,8 +85,29 @@ API 通常分为两类:
 ---
 #### JavaScript 在页面上做了什么？
 浏览器在读取一个网页时，代码（HTML, CSS 和 JavaScript）将在一个运行环境（浏览器标签）中得到执行。就像一间工厂，将原材料（代码）加工为一件产品（网页）。
+
 ![HTML+CSS+JavaScript组装成网页](https://raw.githubusercontent.com/huangtiancai/JavaScript-basic-series/master/imgs/execution.png)
 
+在 HTML 和 CSS 集合组装成一个网页后，浏览器的 JavaScript 引擎将执行 JavaScript 代码。这保证了当 JavaScript 开始运行之前，网页的结构和样式已经就位
+
+这样很好，因为通过 DOM API（见上文）动态修改 HTML 和 CSS 来更新 UI 正是 JavaScript 最普遍的用处所在。如果 JavaScript 在 HTML 和 CSS 就位之前加载运行，就会引发错误。
+
+##### 浏览器安全
+每个浏览器标签页就是其自身用来运行代码的独立容器（这些容器用专业术语称为“运行环境”）。大多数情况下，每个标签页中的代码完全独立运行，而且一个标签页中的代码不能直接影响另一个标签页（或者另一个网站）中的代码。这是一个好的安全措施，如果不这样，黑客就可以从其他网站盗取信息，等等。
+>注：可以用安全的方式在不同网站/标签页中传送代码和数据，但这些技术较为高级,后续再说
+
+##### JavaScript 运行次序
+当浏览器执行到一段 JavaScript 代码时，通常会按从上往下的顺序执行这段代码。这意味着你需要注意代码的顺序。比如，我们回到第一个例子中的 JavaScript 代码：
+
+```javascript{.line-numbers}
+const para = document.querySelector('p');
+//用一个click事件来检测按钮什么时候被点击，然后运行代码更新文本标签
+para.addEventListener('click',updateName);
+function updateName(){
+  let name = prompt("输入一个新的名字：");
+  para.textContent = "玩家1："+name;
+}
+```
 
 
 
