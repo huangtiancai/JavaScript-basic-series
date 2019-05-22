@@ -85,9 +85,9 @@ API 通常分为两类:
 ---
 #### JavaScript 在页面上做了什么？
 浏览器在读取一个网页时，代码（HTML, CSS 和 JavaScript）将在一个运行环境（浏览器标签）中得到执行。就像一间工厂，将原材料（代码）加工为一件产品（网页）。
+![HTML+CSS+JavaScript组装成网页](https://raw.githubusercontent.com/huangtiancai/JavaScript-basic-series/master/imgs/execution.png)
 
 
-  
 
 
 
