@@ -131,10 +131,45 @@ s
 #### 怎样向页面添加 JavaScript？
 可以像添加 CSS 那样将 JavaScript 添加到 HTML 页面中。CSS 使用 <link> 元素链接外部样式表，使用 <style> 元素向 HTML 嵌入内部样式表，JavaScript 这里只需一个元素——<script>。我们来看看它是怎么工作的。
 
-内部 JavaScript
+##### 内部 JavaScript
+```javascript{.line-numbers}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+  </head>
 
+<body>
+    <button>点我呀！</button>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+          
+          function createParagraph(){
+            let para = document.createElement('p');
+            alert(para);
+            para.textContent = '你点击来了这个按钮！';
+            document.body.appendChild(para);
+          }
 
+          const buttons =  document.querySelectorAll('button');
+          alert(buttons);
+          alert(buttons.length);
 
+          for(let i = 0;  i < buttons.length;i++){
+            alert(i);
+            alert(buttons.length);
+            buttons[i].addEventListener('click',createParagraph);
+          }
+        });
+    </script>
+
+</body>
+</html>
+
+```
+
+#### 外部 JavaScript
 
 
 
