@@ -170,6 +170,45 @@ s
 ```
 
 #### 外部 JavaScript
+- 1.首先，在刚才的 HTML 文件所在的目录下创建一个名为 script.js 的新文件。请确保扩展名为 .js，只有这样才能被识别为 JavaScript 代码
+- 2.将<script>元素替换为：
+```
+<script src="script.js" async></script>
+```
+- 3.在 script.js 文件中，添加下面的脚本
+```
+function createParagraph(){
+      let para = document.createElement('p');
+      para.textContent = '你点击来了这个按钮！';
+      document.body.appendChild(para);
+    }
+
+    const buttons =  document.querySelectorAll('button');
+
+    for(let i = 0;  i < buttons.length;i++){
+      buttons[i].addEventListener('click',createParagraph);
+    }
+```
+- 4.保存并刷新浏览器，你会发现二者完全一样。但是现在我们把 JavaScript 写进了一个外部文件。这样做一般会使代码更加有序，更易于复用，且没有了脚本的混合，HTML 也会更加易读，因此这是个好的习惯。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
