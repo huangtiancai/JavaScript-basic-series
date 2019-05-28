@@ -63,10 +63,10 @@
               lastResult.textContent = '恭喜你！猜对了';
               lastResult.style.backgroundColor = 'green'; //显示一个漂亮的绿色的祝贺信息
               lowOrHi.textContent = ' ';//清除“高了 / 低了”信息框的内容
-              setGameOver();            //调用 setGameOver() 方法
+              //setGameOver();            //调用 setGameOver() 方法
             }else if(guessCount===10){
               lastResult.textContent = 'Game Over!';
-              setGameOver();
+              //setGameOver();
             }else{
               lastResult.textContent = '你猜错了！';
               lastResult.style.backgroundColor = 'red';
@@ -82,7 +82,7 @@
             alert("累加后的guessCount:"+guessCount)
             //把表单中文本域的值清空
             guessField.value = '';
-            //重新聚焦于此???
+            //重新聚焦于此
             guessField.focus();
             
 
@@ -99,9 +99,12 @@
 
         }
 
+        //添加事件
+        guessSubmit.addEventListener('click',checkGuess);
 
-
-
+        function setGameOver(){
+          guessField.disable = true;
+        }
 
 
 
