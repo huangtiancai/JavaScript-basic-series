@@ -19,7 +19,7 @@
 		
 			1.JavaScript 拥有动态类型。这意味着相同的变量可用作不同的类型：
 			实例
-			var x                // x 为 undefined
+			var x;	             // x 为 undefined
 			var x = 6;           // x 为数字
 			var x = "Bill";      // x 为字符串
 			2.JavaScript 字符串
@@ -39,7 +39,7 @@
 			布尔（逻辑）只能有两个值：true 或 false。
 			var x=true
 			var y=false
-			5.JavaScript 数组
+			5.JavaScript 数组  Array
 			6.Undefined 和 Null
 			Undefined 这个值表示变量不含有值。
 			可以通过将变量的值设置为 null 来清空变量。
@@ -90,12 +90,18 @@
 			var person= {	
 				firstname:"Bill",
 				lastname: "Gates",
-				id:		  "123",
+				id:		  "123"
 			};
 			//对象属性有两种寻址方式
 			console.log(person.firstname)
 			console.log(person["firstname"]);
 			
+			
+
+
+
+
+
 			
 			//ECMAScript 原始类型
 			console.log("--------------typeof运算符----------------");
@@ -110,7 +116,7 @@
 			console.log(typeof 22);				//Number
 			console.log(typeof true);			//Boolean
 			console.log(typeof oTemp);			//undefined	 变量 oTemp(已声明，未初始化)，并没有未定义只是没有初始值,该变量将被赋予值 undefined，即 undefined 类型的字面量
-			console.log(typeof oTemp2);			//undefined	 变量 oTemp(未声明)
+			console.log(typeof oTemp2);			//undefined	 变量 oTemp2(未声明)
 			//测试变量oTemp的值是否等于 undefined
 			console.log(oTemp==undefined);		//true
 			//代码将引发错误:如果对 oTemp2 使用除 typeof 之外的其他运算符（这里是"=="）的话，会引起错误，因为其他运算符只能用于已声明的变量上。
