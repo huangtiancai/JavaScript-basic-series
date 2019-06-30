@@ -12,8 +12,8 @@
 
     <script>
         $(function(){
-            $("#dg").datagrid({
-                url:'datagrid_data.json',
+            $("#datagrid").datagrid({
+                url:'datagrid_data.json',//模拟从后台传过来的json数据，实际开发过程中把url改为实际的路径即可。
                 columns:[[
                     {field:'code',title:'编号',width:100},
                     {field:'name',title:'姓名',width:100},
@@ -56,6 +56,6 @@
 </head>
 <body>
  <div id="dd"></div>
-   <table id="dg"></table>
+   <table id="datagrid"></table>
 </body>
 </html>

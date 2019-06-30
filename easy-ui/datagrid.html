@@ -14,17 +14,17 @@
     <table class="easyui-datagrid" style="width:400px;height:250px"
            data-options="url:'datagrid_data.json',fitColumns:true,singleSelect:true">
         <thead>
-        <tr>
-            <th data-options="field:'code',width:100">编码</th>
-            <th data-options="field:'name',width:100">名称</th>
-            <th data-options="field:'price',width:100,align:'right'">价格</th>
-            <!--
-                    value  当前field对应的值   img/1.png
-                    rowValues  当前行所有的值
-                    index  当前行的索引位置从0开始
-            -->
-            <th data-options="field:'img',width:100,formatter:function(value,rowValues,index){ return '<img src='+value+' />' }">图片</th>
-        </tr>
+            <tr>
+                <th data-options="field:'code',width:100">编码</th>
+                <th data-options="field:'name',width:100">名称</th>
+                <th data-options="field:'price',width:100,align:'right'">价格</th>
+                <!--
+                        value  当前field对应的值   img/1.png
+                        rowValues  当前行所有的值
+                        index  当前行的索引位置从0开始
+                -->
+                <th data-options="field:'img',width:100,formatter:function(value,rowValues,index){ return '<img src='+value+' />' }">图片</th>
+            </tr>
         </thead>
     </table>
 
