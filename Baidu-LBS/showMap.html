@@ -42,15 +42,14 @@
         //添加多个控件
         //1.平移缩放控件 
         //PC端默认位于地图左上方，它包含控制地图的平移和缩放的功能。移动端提供缩放控件，默认位于地图右下方 
-        var opts = {type: BMAP_NAVIGATION_CONTROL_SMALL}  //将调整平移缩放地图控件的外观  
-        map.addControl(new BMap.NavigationControl(opts));
+        map.addControl(new BMap.NavigationControl());
         //2.比例尺控件:默认位于地图左下方，显示地图的比例关系
         map.addControl(new BMap.ScaleControl());
         //3.缩略地图:默认位于地图右下方，是一个可折叠的缩略地图 
         map.addControl(new BMap.OverviewMapControl());
         //4.地图类型:默认位于地图右上方 
         map.addControl(new BMap.MapTypeControl());
-        map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用  
+        map.setCurrentCity("北京");  // 仅当设置城市信息时，MapTypeControl的切换功能才能可用   
 
     </script>
 
