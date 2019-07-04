@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <!--添加一个meta标签，以便使您的页面更好的在移动平台上展示-->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
-    <title>showMap</title>
+    <title>个性化地图</title>
 
     <!--引用百度地图API文件-->
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=UhNMGZGH3WYkLOIXHHOlS644H2eiT1rk"></script>
@@ -49,7 +49,24 @@
         map.addControl(new BMap.OverviewMapControl());
         //4.地图类型:默认位于地图右上方 
         map.addControl(new BMap.MapTypeControl());
-        map.setCurrentCity("北京");  // 仅当设置城市信息时，MapTypeControl的切换功能才能可用   
+        //map.setCurrentCity("北京");  // 仅当设置城市信息时，MapTypeControl的切换功能才能可用   
+
+
+        //定制方式一：模板选择方式
+
+        //1.选择模板
+        //2.设置地图样式
+        //将style改为模板下方的英文名称，如下图所示红框所示：
+        //其中，mapStyle为MapStyle类，该类使用对象字面量形式表示，不可实例化。style用于设置底图颜色样式。 
+
+        // var mapStyle={  style : "*模板英文名称*" }  
+        // map.setMapStyle(mapStyle);
+
+        //如下示例为：风格为midnight的设置方法 
+        var mapStyle = {style:"midnight"};
+        map.setMapStyle(mapStyle);
+
+
 
         
 
