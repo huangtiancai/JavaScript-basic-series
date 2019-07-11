@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+  </body>
+
+    <script>
+        var person = {};
+        //在浏览器控制台输入person，然后按下Enter(确认)键，你会得到如下结果：{}
+        //alert(person);//[object Object]
+
+        //更新下我们的对象:
+        person = {
+            name:['Bob','Tom'],
+            age:20,
+            gender:'male',
+            interests:['music','skiing'],
+            greeting:function(){
+                alert("Hi!"+this.name[0]);
+            }
+        };
+    </script>
+</html>

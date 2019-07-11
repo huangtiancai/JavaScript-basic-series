@@ -4,8 +4,8 @@
 		<meta charset="utf-8" />
 		<title></title>
 		<!-- JavaScript 变量均为对象。当您声明一个变量时，就创建了一个新的对象 -->
-		<!--
-			作者：黄天才
+		<!-- 
+
         	时间：2019-01-27
         	描述：JavaScript 的基本语法，变量声明，数据类型 和 字面量。
 				1.变量是存储信息的容器
@@ -53,6 +53,7 @@
 				当您向变量分配文本值时，应该用双引号或单引号包围这个值。				
 				当您向变量赋的值是数值时，不要使用引号。如果您用引号包围数值，该值会被作为文本来处理。		
 				6.变量类型
+
 				7.动态类型
 				JavaScript是一种“动态类型语言”，这意味着不同于其他一些语言(译者注：如C、JAVA)，您不需要指定变量将包含什么数据类型（例如number或string）
 					
@@ -61,12 +62,42 @@
 		
 	</head>
 	<body>
-		<p>点击这里来创建变量，并显示结果。</p>
+		<!-- <p>点击这里来创建变量，并显示结果。</p>
 		<p id="demo"></p>
-		<button onclick="myFunction()">点击这里!</button>
+		<button onclick="myFunction()">点击这里!</button> -->
+
+
+		<button>Press me</button>
+		
+
+
 		<script>
+			//点击这里来创建变量，并显示结果
+			// function myFunction(){
+			// 	var carname = 'Volvo';
+			// 	document.getElementById("demo").innerHTML=carname;
+			// 	//document.getElementById("myDiv").innerHTML="Hai";	
+			// }
+			var button = document.querySelector("button");
+			button.onclick = function(){
+				var name = prompt("请输入你的名字：");
+				alert("Hello "+name+",nice to see you");
+			}
+
+			//声明变量
+			var myName;
+			var myAge;
+
 
 			//变量类型
+			
+			//声明变量类型
+			var catname = new String;
+			var t = new Number;
+			var s = new Boolean;
+			var u = new Array;
+			var w = new Object;
+
 			//Number
 			//你可以在变量中存储数字，不论这些数字是像30（也叫整数）这样，或者像2.456这样的小数（也叫做浮点数）
 			//1.与其他编程语言不同，在 JavaScript 中你不需要声明一个变量的类型
@@ -80,8 +111,9 @@
 			//Boolean
 			//Boolean 的值有2种：true或false。它们通常被用于在适当的代码之后，测试条件是否成立
 			var iAmAlive = true;
+			//实际上通常被用于在适当的代码之后，测试条件是否成立
 			var test = 6 < 3; 	
-			alert("test:"+test);
+			//alert("test:"+test);
 
 			//Array
 			//数组是一个单个对象，其中包含很多值，方括号括起来，并用逗号分隔。
@@ -104,10 +136,6 @@
 			var myNumber = '30';//this is still a string
 			myNumber = 50;	    //this is a number
 
-			
-
-
-
 			var a;
 			console.log("the value of a is "+a);
 			console.log("the value of b is "+b);
@@ -116,11 +144,7 @@
 			//抛出一个引用错误（ReferenceError）异常；Uncaught ReferenceError: c is not defined
 			//console.log("the value of c is "+c);
 			
-			function myFunction(){
-				var carname = 'Volvo';
-				document.getElementById("demo").innerHTML=carname;
-				//document.getElementById("myDiv").innerHTML="Hai";	
-			}
+			
 		</script>
 
 
