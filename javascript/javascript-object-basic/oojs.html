@@ -113,15 +113,33 @@
         //"this"是非常有用的——它保证了当代码的上下文(context)改变时变量的值的正确性（比如：不同的person对象拥有不同的name这个属性，很明显greeting这个方法需要使用的是它们自己的name）。
 
         //以两个简单的person对象来说明：
+        //即使greeting这个方法的代码是一样的,但是this 指向了代码所在的对象(其实代码运行时所在的对象)。
         var person1 = {
           name:'Chris',
           greeting:function(){
-            alert();
+            alert(this.name);
           }
         }
 
+        var person2 = {
+          name:'Cherry',
+          greeting :function(){
+            alert(this.name);
+          }
+        }
 
+        //一直在使用对象
+        //一直在使用浏览器内建的API和JavaScript的一些对象
+        var myString = 'Hello,I am Bob!';
+        myString.split(",");//使用了一个字符串实例上可用的方法
+        //随时可以在代码里使用字面量创建一个字符串，字符串会自动的被创建为字符串(String)的实例，因此会有一些常见的方法和属性可用。
 
+        //当你这样访问document对象时,正在使用Document实例上可用的方法
+        var myDiv = document.createElement('div');
+        var myVideo = document.querySelector('video');
+
+        //其他内建的对象或API:Array，Math， 等,内建的对象或API不会总是自动地创建对象的实例
+        var myNotification = new Notification('Hello!');
 
     </script>
 </html>
