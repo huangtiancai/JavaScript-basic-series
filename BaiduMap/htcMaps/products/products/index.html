@@ -23,7 +23,8 @@
     <link rel="shortcut icon" href="http://lbsyun.baidu.com/map/resource/global/images/lbsyunlogo_icon.ico">
     <link rel="stylesheet" href="./styles/jquery.fancybox.css" type="text/css">
     <script src="./js/jquery.fancybox.pack.js" type="text/javascript"></script>
-    <script src="./js/map.js"></script>
+    <!-- <script src="./js/map.js"></script> -->
+
     <script>
         //ie7
         var browser = navigator.appName;
@@ -583,20 +584,27 @@
                             </div>
                             <p class="map-content-title">眼眸</p>
                         </li>
-                        <li class="box4">
+                        <!-- <li class="box4">
                             <div class="map-border" id="">
                                 <i class="map-icon5"></i>
                             </div>
                             <p class="map-content-title">一梭烟雨</p>
+                        </li> -->
+                        <li class="box4">
+                            <div class="map-border" id="">
+                                <i class="map-icon5"></i>
+                            </div>
+                            <p class="map-content-title">默认</p>
                         </li>
+                        
                     </ul>
                 </div>
                 <div class="map-container">
-                    <div class="mapstyle-bg"></div>
-                    <iframe name="map" src="k0_8.html" width="100%" scrolling="no"
-                        height="100%" frameborder="0" id="map"></iframe>
+                    <!-- <div class="mapstyle-bg"></div> -->
+                    <iframe name="map" src="jsdemo/demo/k0_7.htm" width="100%" scrolling="no" height="100%"
+                        frameborder="0" id="map"></iframe>
                 </div>
-                <a href="http://lbsyun.baidu.com/index.php?title=open/custom" target="_blank" class="checkMore">查看大图</a>
+                <a href="jsdemo/demo/k0_7.htm" target="_blank" class="checkMore">查看大图</a>
             </div>
         </div>
         <div class="middle-cover">
@@ -707,7 +715,28 @@
         })();
     </script>
 
-    <script type="text/javascript">
+    <script>
+        $(function(){
+                $(".map-ul").find("li").each(function(i){
+                    $(this).click(function(){
+                        //alert(i);
+                        0 == i ? $("iframe").attr("src", "jsdemo/demo/k0_7.htm") : 1 == i ? $("iframe").attr("src","jsdemo/demo/k0_4.htm") : 2 == i ? $("iframe").attr("src", "jsdemo/demo/k0_6.htm") : 3 == i ? $("iframe").attr("src", "jsdemo/demo/k0_5.htm") : $("iframe").attr("src", "jsdemo/demo/k0.htm");
+                        var t = $(this);
+                        timer = window.setTimeout(function () {
+                        t.children(".map-border").attr("id", "determine"), t.siblings().children(".map-border").attr("id","")
+                     })
+
+                    //查看被选中的大图
+                    $('.checkMore').click(function(){
+                         0 == i ? $("a").attr("href", "jsdemo/demo/k0_7.htm") : 1 == i ?
+                         $("a").attr("href","jsdemo/demo/k0_4.htm") : 2 == i ?$("a").attr("href",
+                         "jsdemo/demo/k0_6.htm") : 3 == i ? $("a").attr("href", "jsdemo/demo/k0_5.htm") :
+                         $("a").attr("href", "jsdemo/demo/k0.htm");                  
+                    });
+                    
+                });
+            });
+        });
     </script>
 
 </body>

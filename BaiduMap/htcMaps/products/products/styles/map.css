@@ -169,7 +169,7 @@ html, body {
             display: block;
             width: 94px;
             height: 54px;
-            background: url("../images/map") no-repeat center;
+            background: url("http://mapopen-website-wiki.cdn.bcebos.com/products/map/mapex.jpg") no-repeat center;
             background-size: 520px 64px; }
           .content .middle-map .map-ex li .map-border .map-icon1 {
             background-position: -421px -5px; }
@@ -200,7 +200,8 @@ html, body {
       .content .middle-map .map-container .mapstyle-bg {
         width: 998px;
         height: 358px;
-        background: url("https://mapopen-website-wiki.cdn.bcebos.com/products/map/.jpg") no-repeat center; }
+        background: url("https://mapopen-website-wiki.cdn.bcebos.com/products/map/qinghuaci.jpg.jpg") no-repeat center;
+        }
     .content .middle-map .checkMore {
       display: block;
       text-decoration: none;
