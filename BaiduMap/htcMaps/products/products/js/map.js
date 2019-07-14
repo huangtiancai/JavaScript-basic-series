@@ -16,12 +16,12 @@ $(function () {
     }), $(".map-ul").find("li").each(function (i) {
         //jQuery 遍历 - each() 方法
         $(this).click(function () {
-            0 == i ? $("iframe").attr("src", "/jsdemo/demo/k0_7.htm") : 1 == i ? $("iframe").attr("src", "/jsdemo/demo/k0_4.htm") : 2 == i ? $("iframe").attr("src", "/jsdemo/demo/k0_6.htm") : 3 == i ? $("iframe").attr("src", "/jsdemo/demo/k0_5.htm") : $("iframe").attr("src", "/jsdemo/demo/k0_8.htm");
+            0 == i ? $("iframe").attr("src", "jsdemo/demo/k0_7.htm") : 1 == i ? $("iframe").attr("src", "jsdemo/demo/k0_4.htm") : 2 == i ? $("iframe").attr("src", "jsdemo/demo/k0_6.htm") : 3 == i ? $("iframe").attr("src", "jsdemo/demo/k0_5.htm") : $("iframe").attr("src", "jsdemo/demo/k0_8.htm");
             var t = $(this);
             timer = window.setTimeout(function () {
                 t.children(".map-border").attr("id", "determine"), t.siblings().children(".map-border").attr("id", "")
             })
-        })
+        })  
     }), $(t).each(function (i) {
         $(this).hover(function () {
             var t = $(this);

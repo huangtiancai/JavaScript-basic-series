@@ -123,7 +123,7 @@ html, body {
       margin: 60px auto 0;
       width: 1025px;
       height: 79px;
-      background: url("./map_selstyle.png") no-repeat center;
+      background: url("../images/map_selstyle.png") no-repeat center;
       background-size: 1025px 75px; }
     .content .middle-map .map-ex {
       margin: 50px auto 0;
@@ -147,10 +147,10 @@ html, body {
           border: 1px solid #FF4E40; }
         .content .middle-map .map-ex li #determine:after {
           content: '';
-          display: block;
+          display: block; 
           width: 20px;
           height: 20px;
-          background: url(/cashier/common/images/quota-icon.png?a) -80px 0 no-repeat;
+          background: url(../images/quota-icon.png?a) -80px 0 no-repeat;
           background-size: 100px 100px;
           position: absolute;
           right: 0;
@@ -169,7 +169,7 @@ html, body {
             display: block;
             width: 94px;
             height: 54px;
-            background: url("./mapex.jpg") no-repeat center;
+            background: url("../images/map") no-repeat center;
             background-size: 520px 64px; }
           .content .middle-map .map-ex li .map-border .map-icon1 {
             background-position: -421px -5px; }
@@ -192,15 +192,15 @@ html, body {
         margin-left: 100px; }
     .content .middle-map .map-container {
       margin: 20px auto 0;
-      width: 1145px;
-      height: 400px;
+      width: 998px;
+      height: 358px;
       padding: 10px;
       border: 1px solid #EFEFEF;
       border-radius: 5px; }
       .content .middle-map .map-container .mapstyle-bg {
         width: 998px;
         height: 358px;
-        background: url("https://mapopen-website-wiki.cdn.bcebos.com/products/map/qinghuaci.jpg") no-repeat center; }
+        background: url("https://mapopen-website-wiki.cdn.bcebos.com/products/map/.jpg") no-repeat center; }
     .content .middle-map .checkMore {
       display: block;
       text-decoration: none;
@@ -226,7 +226,7 @@ html, body {
       margin: 60px auto 0;
       width: 414px;
       height: 79px;
-      background: url("./map_overlay.png") no-repeat center;
+      background: url("../images/map_overlay.png") no-repeat center;
       background-size: 414px 75px; }
     .content .middle-cover .cover-bg {
       margin-top: 40px;
