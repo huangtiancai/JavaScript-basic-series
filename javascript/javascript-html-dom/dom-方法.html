@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<p id="demo" name="demo" class="demo"></p>
+		<div id="div1">The text above has been created dynamically.</div>
+		<div id="top" align="center">父节点
+			<div id="nested">子节点</div>
+		</div>
+		<script>
+			//getElementById 是方法，而 innerHTML 是属性
+			document.getElementById('demo').innerHTML = 'Hello';
+
+			//alert(document.getElementById('demo').attributes);//[object NamedNodeMap]
+
+			//getElementById 方法
+			//getElementById 方法使用 id="demo" 来查找元素
+
+			//innerHTML 属性
+			//获取元素内容最简单的方法是使用 innerHTML 属性
+			//innerHTML 属性可用于获取或替换 HTML 元素的内容
+			//innerHTML 属性可用于获取或改变任何 HTML 元素，包括 <html> 和<body>
+
+
+			//1.查找HTML元素：
+			//1.1通过元素 id 来查找元素:返回一个对应的节点
+			document.getElementById('demo');
+			//1.2通过类名来查找元素:返回一个对应的节点
+			document.getElementsByClassName('demo');
+			//1.3通过标签名来查找元素:返回一个对应的节点
+			document.getElementsByTagName('p');
+
+			//alert(document.getElementById('demo')); 	//[object HTMLParagraphElement]
+			//alert(document.getElementsByClassName('demo'));//[object HTMLCollection]
+			//alert(document.getElementsByTagName('p'));  //[object HTMLCollection]
+			
+			//2.改变HTML元素
+			//element.innerHTML = new html content 改变元素的 inner HTML
+			document.getElementById('demo').innerHTML = '<p>这是修改后的段落';
+			
+			//alert(document.getElementsByClassName('demo')[0]);//[object HTMLParagraphElement]
+			document.getElementsByClassName('demo')[0].innerHTML = '这是第三个的段落';
+			
+			//alert(document.getElementsByTagName('p')[0]);
+			document.getElementsByTagName('p')[0].innerHTML = '这是第四个的段落';
+
+			//element.attribute = new value 改变 HTML 元素的属性值?
+
+			//element.setAttribute(attribute, value) 改变 HTML 元素的属性值?
+
+			//element.style.property = new style 改变 HTML 元素的样式
+            document.getElementById('demo').style.color = 'red';
+			document.getElementById('demo').style.fontSize = '30px';
+			
+
+			//3.添加和删除元素
+			//document.createElement(element) 创建 HTML 元素
+			//document.removeChild(element) 删除 HTML 元素
+			//document.appendChild(element) 添加 HTML 元素
+			//document.replaceChild(element) 替换 HTML 元素
+			//document.write(text) 写入 HTML 输出流
+			
+			//3.1 document.createElement(element) 创建 HTML 元素
+			document.body.onload = addElement;////document.body 返回<body>元素
+			function addElement(){
+				// create a new div element and  give it some content
+				var newDiv = document.createElement("div");
+				var newContent = document.createTextNode('Hi,haha');
+				//add the text node to the newly created div.
+				newDiv.appendChild(newContent);
+
+				var currentDiv = document.getElementById('div1');
+				document.body.insertBefore(newDiv,currentDiv);
+				
+			}
+			
+			//3.2document.removeChild(element) 删除 HTML 元素
+
+			//Node.removeChild() 方法从DOM中删除一个子节点。返回删除的节点。
+			//Node-->document
+
+			//语法:
+			//let oldChild = node.removeChild(child); //返回删除的节点
+			//OR
+			//element.removeChild(child);
+
+			// child 是要移除的那个子节点.
+			// node  是child的父节点.
+			// oldChild保存对删除的子节点的引用. oldChild === child.
+
+			//被移除的这个子节点仍然存在于内存中,只是没有添加到当前文档的DOM树中,因此,你还可以把这个节点重新添加回文档中,当然,实现要用另外一个变量比如上例中的oldChild来保存这个节点的引用.
+			//如果使用上述语法中的第二种方法, 即没有使用 oldChild 来保存对这个节点的引用, 则认为被移除的节点已经是无用的, 在短时间内将会被内存管理回收.
+			// 先定位父节点,然后删除其子节点
+			// var d = document.getElementById('top');
+			// var d_nested = document.getElementById('nested');
+			// var throwawayNode = d.removeChild(d_nested);
+
+			// 无须定位父节点,通过parentNode属性直接删除自身
+			// var node = document.getElementById('nested');
+			// if(node.parentNode){
+			// 	node.parentNode.removeChild(node);
+			// }
+
+			//移除一个元素节点的所有子节点
+			// var element = document.getElementById('top');
+			// while(element.firstChild){
+			// 		element.remove(element.firstChild);
+			// }
+
+		</script>
+	</body>
+</html>
