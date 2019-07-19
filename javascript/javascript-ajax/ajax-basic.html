@@ -10,7 +10,8 @@
 		<div id="myDiv">
 			Let AJAX change this text
 		</div>
-		<button type="button" onclick="loadXMLDoc()">请求数据</button>
+		<button type="button" onclick="loadXMLDoc()">Get请求数据</button>
+		<button type="button" onclick="loadXMLDoc1()">Post请求数据</button>
 
 		<script>
 			//AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
@@ -67,26 +68,68 @@
 			// 发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠
 
 			//GET 请求
-			//示例：
+			//一个简单的 GET 请求：
 			function loadXMLDoc(){
-				alert("ajax");
+				alert('Get请求');
 				var xmlhttp;
 				if(window.XMLHttpRequest){
 					xmlhttp = new XMLHttpRequest();
 				}else{
 					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 				}
-				//var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
-				xmlhttp.open('GET','/ajax/demo_get.txt',true);
+				
+				//请求可能得到的是缓存的结果,为了避免这种情况，向 URL 添加一个唯一的 ID
+				xmlhttp.open('GET','/ajax/demo_get.txt?t='+Math.random(),true);
 				xmlhttp.send();
 
 				xmlhttp.onreadystatechange = function(){
-					alert("onreadystatechange");
 					if(xmlhttp.readyState==4 && xmlhttp.status==200){
 						document.getElementById('myDiv').innerHTML = xmlhttp.responseText;
 					}
 				}
 			}
+
+			//如果您希望通过 GET 方法发送信息，请向 URL 添加信息：
+			// xmlhttp.open('GET','/ajax/demo_get.txt?name=Tom&pasword=123&t='+Math.random(),true);
+			// xmlhttp.send();
+
+
+			//POST 请求
+			//一个简单 POST 请求：
+			// xmlhttp.open("POST","demo_post.txt",true);
+			// xmlhttp.send();
+			function loadXMLDoc1(){
+				alert("Post请求");
+				var xmlhttp;
+				if(window.XMLHttpRequest){
+					xmlhttp = new XMLHttpRequest();
+				}else{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				//请求可能得到的是缓存的结果,为了避免这种情况，向 URL 添加一个唯一的 ID
+				xmlhttp.open('POST','/ajax/demo_post.txt',true);
+				xmlhttp.send();
+
+				alert("1");
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState==4 && xmlhttp.status==200){
+						document.getElementById('myDiv').innerHTML = xmlhttp.responseText;
+					}
+				}
+			}
+
+
+
+
+
+
+
+
+
+
+
+
 
 			//浏览器会报错:
 			//Access to XMLHttpRequest at 'file:///E:/ajax/demo_get.txt' from origin 'null' has been blocked by CORS policy:
@@ -99,6 +142,8 @@
 			//Firefox浏览器中测试确实可以
 
 			//解决办法：
+			//配置：liveServer简易服务器
+
 			
 
 
