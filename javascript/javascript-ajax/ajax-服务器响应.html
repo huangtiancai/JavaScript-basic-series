@@ -8,13 +8,8 @@
 	<body>
 
 		<div id="myDiv">Let AJAX change this text</div>
-		<button type="button" onclick="loadXMLDoc()">Get请求数据</button>
-
 		<div id="myDiv1">Let AJAX change this text</div>
-		<button type="button" onclick="loadXMLDoc1()">Post请求数据</button>
-
-		<div id="myDiv2">Let AJAX change this text</div>
-		<button type="button" onclick="loadXMLDoc2()">Post请求数据</button>
+		<button type="button" onclick="loadXMLDoc()">Get请求数据</button>
 
 		<script>
 			// request.responseType = 'json'; //请求的响应类型
@@ -29,15 +24,11 @@
 
 			//responseText 属性
 			//responseText 属性返回字符串形式的响应，因此您可以这样使用：
-			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+			//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+			//示例见前面
 
 			//responseXML 属性
 			//如果来自服务器的响应是 XML，而且需要作为 XML 对象进行解析，请使用 responseXML 属性：
-
-
-			
-		
-
 			function loadXMLDoc(){
 				alert('Get请求');
 				var xmlhttp;
@@ -54,15 +45,19 @@
 				xmlhttp.onreadystatechange = function(){
 					if(xmlhttp.readyState==4 && xmlhttp.status==200){
 						xmlDoc = xmlhttp.responseXML;
-						x = xmlDoc.getElementsByElementByTagName('title');//获得一个title标签元素的集合
+						x = xmlDoc.getElementsByTagName('title');//获得一个title标签元素的集合
+						//alert("x:"+x);
 						txt = ' ';
 						for(i=0;i<x.length;i++){
-
+							txt = txt + x[i].childNodes[0].nodeValue + ' ';
+							document.getElementById('myDiv').innerText = txt;
+							txt1 = txt + x[i].childNodes[0].nodeValue + '</br>';
+							document.getElementById('myDiv1').innerHTML = txt;
 						}
 					}
 				}
 			}
-			//childNodes
+			////element.childNodes 属性返回节点的子节点集合
 			//Node.nodeValue 属性返回或设置当前节点的值
 			//let value = node.nodeValue;
 			//value是一个包含当前节点的值的字符串（如果有的话）
