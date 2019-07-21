@@ -79,6 +79,7 @@
 				//xmlhttp.open('GET','/ajax/demo_post.txt',true); //post请求不能访问服务端的静态资源
 				xmlhttp.open('POST','http://127.0.0.1:8080/Servlet-demo4/checkUser.action?username=tom',true);
 				xmlhttp.send();
+				
 				xmlhttp.onreadystatechange = function(){
 					if(xmlhttp.readyState==4 && xmlhttp.status==200){
 						document.getElementById('myDiv1').innerHTML = xmlhttp.responseText;
