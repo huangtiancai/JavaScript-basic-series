@@ -25,6 +25,14 @@
 
 		<p id="demo4"></p>
 
+		<form id="form1">
+			firstname<input type="text" id="" name="" value="tom">
+			lastname<input type="text" id="" name="" value="gate">
+			<input type="submit" value="提交"> 
+		</form>
+		<button onclick="myFunction()">单击按钮，显示表单中每个元素的值。</button>
+		<p id="demo5"></p>
+
 		<script>	
 			//查找 HTML 元素
 			//通常，通过 JavaScript，您需要操作 HTML 元素,首先找到这些元素。有好几种完成此任务的方法：
@@ -65,12 +73,25 @@
 			//文档对象模型Document引用的querySelector()方法返回文档中与指定选择器或选择器组匹配的第一个 html元素Element。 如果找不到匹配项，则返回null。
 			var x4 = document.querySelectorAll('p');
 			var x5 = document.querySelector('p');
-			alert(x4);
-			alert(x5);
+			//alert(x4);//[object NodeList]
+			//alert(x5);//[object HTMLParagraphElement]
 
 			
 			//5.通过 HTML 对象选择器查找 HTML 对象
+			function myFunction(){
+				//查找 id="frm1" 的 form 元素(文本框+提交)
+				var x = document.forms['form1'];
+				//在 forms 集合中，然后显示所有元素值
+				var text = '';
+				for(var i=0;i<x.length;i++){
+					//elements 集合可返回包含表单中所有元素的数组
 
+					//拼接字符串 注意：<br>在js中带引号，在js之外直接就是<br>
+					text += x.elements[i].value + '<br>';
+					
+				}
+				document.getElementById('demo5').innerHTML = text;
+			}
 
 		</script>
 	</body>
