@@ -63,12 +63,11 @@
                         username:'tom',
                         city:'beijing'
                     },
+                    dataType: 'json',
                     success:function(result,status,xhr){//请求成功后的回调函数
-                        //alert(result);
+                        //alert('请求成功');
+                        //alert(typeof result); //object
                         //前台接收到后台传过来的json数组实际上是一个字符串,字符串的内容是json数组，这种情况下先要将字符串转换成json数组，再遍历。
-                        //var da = JSON.stringify(result);
-                        //alert(result);
-                        //alert(typeof result); //string
                         handler(result);
                        
                     },
@@ -83,19 +82,13 @@
 
             function handler(result){
                 console.log(result);
-                //result = [{"id":"1","text":"江苏省"},{"id":"2","text":"安徽省"},{"id":"3","text":"广东省"}]
-                //arr_p = {'id':0,'text':'请选择省'} + result
-                var result1 = result.substring(1,result.length);
-                console.log(result1);
+                var resultStr = JSON.stringify(result);
+                var resultStrs =  resultStr.substring(1,resultStr.length);
                 //拼接
-                var JsonString = '[{"id":0,"text":"请选择省"},'+result1; //注意拼接的时候格式一致，都是"才能拼接
-                console.log(JsonString);
-
+                var JsonString = '[{"id":0,"text":"请选择省"},'+resultStrs; 
                 var data = JSON.parse(JsonString);
 
                 var arr_p = data; //arr_p数组的数据来源服务端查询
-
-
                 general_select_p();
                 general_select_c(0);
                 general_select_a(0);
