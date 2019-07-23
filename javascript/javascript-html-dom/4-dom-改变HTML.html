@@ -15,7 +15,10 @@
 	
 
 
-	<body>
+	<body onload="chechCookie()">
+
+		<p id="cookie">检查Cookie</p>
+
 		<img id='img' src="favicon.ico">
 		<p id="p1">Hello</p>
 		<h1 onclick="this.innerHTML = 'Hello!'">点击此文本！</h1>
@@ -25,7 +28,41 @@
 		<div id="div1" onclick="display()">行内绑定</div>
 		<div id="div2">动态绑定</div>
 		<button id="btn">点我</button>
+
+		<input type="text"  id="fname">
+
+		<p>onmouseover和onmouseout事件</p>
+		<div onmouseover="Over(this)" onmouseout="Out(this)" style="background-color:red;width:100px;height:100px;padding:40px;">
+			请把鼠标移上来
+		</div>
+
+		<p>onmousedown, onmouseup事件</p>
+		<div onmousedown="mDown(this)" onmouseup="mUp(this)"
+			style="background-color:red;width:100px;height:100px;padding:40px;">
+			请点击鼠标
+		</div>
+
+		请输入你的名字：<input type="text" id="username">
+
+		<br>
+
+		<button id="myButton">使用addEventListener()方法将click事件附加到按钮</button>
+		<p id="p3"></p>
+
 		<script>	
+
+			function chechCookie(){
+				var text = "";
+				if(navigator.cookieEnabled == true){
+					text = "Cookie 已启用";
+				}else{
+					text = "Cookie 未启用";
+				}
+				document.getElementById("cookie").innerHTML = text;
+
+			}
+
+
 			//1.改变 HTML 输出流,JavaScript 能够创建动态 HTML 内容：
 			//document.write() 可用于直接写入 HTML 输出流：
 			//document.write(Date());
@@ -98,13 +135,13 @@
 			//2.动态绑定
 			//3.事件监听
 
-			//1.行内绑定
+			//(1)行内绑定
 			//基本语法：
 			//行内绑定: <标签 属性列表 事件=”事件的处理程序”/>
 			//例：<input type='button' onclick='display()' />
 
 
-			//2.动态绑定:
+			//(2)动态绑定:
 			//基本语法：
 			//dom对象.事件 = 事件的处理程序（通常是一个匿名函数）
 
@@ -128,7 +165,7 @@
 				}
 			}
 
-			//3.行内绑定与动态绑定的区别
+			//(3)行内绑定与动态绑定的区别
 			//在Javascript中，有一个特殊对象叫做this，其随着运行环境的不同，其指向也是不同的
 
 			//例1：探究行内绑定中的this指向
@@ -173,7 +210,7 @@
 			//事件
 			//onload    	  浏览器已经完成页面加载
 			//onunload 		  浏览器离开页面
-			//onchange		   HTML 元素已被改变
+			//onchange		   HTML元素已被改变
 
 			//onmouseover		把鼠标移动到 HTML 元素上
 			//onmouseout		把鼠标移开 HTML 元素
@@ -183,7 +220,7 @@
 
 			//onfocus 元素获得焦点 如当输入字段获得焦点时改变其背景色
 			//onblur 元素失去焦点
-			
+
 			//onsubmit 确认按钮被点击。
 
 			//onmousedown, onmouseup 以及 onclick
@@ -195,9 +232,75 @@
 			//onmouseover 鼠标移到某元素之上
 			//onmousemove 鼠标被移动
 			
-			document.getElementById("div2").onclick;
-			document.getElementById("div2").onload;
-			document.getElementById("div2").onunload;
+			//(1)onload onunload	
+
+			//(2)onchange
+			//onchange 事件经常与输入字段验证结合使用
+			//当用户改变输入字段内容时，会调用 upperCase() 函数
+			document.getElementById("fname").onchange = function(){
+				var x = this;//this==document.getElementById("fname")
+				x.value = x.value.toUpperCase();
+			}
+
+			//(3)onmouseover 和 onmouseout 事件
+			function Over(obj){
+				obj.innerHTML = "谢谢！";
+			}
+			function Out(obj){
+				obj.innerHTML = "请把鼠标移上来";
+			}
+			//(4)onmousedown, onmouseup 以及 onclick 事件
+			function mDown(obj){
+				obj.style.backgroundColor = "blue";
+				obj.innerHTML = "松开鼠标";
+			}
+			function mUp(obj){
+				obj.style.backgroundColor = "red";
+				obj.innerHTML = "请点击鼠标";
+			}
+
+			//(5)onfocus,onblur
+			//当输入字段获得焦点时改变其背景色
+			document.getElementById("username").onfocus = function(){
+				this.style.background = "yellow";	
+			}
+			//失去焦点时清空背景色
+			document.getElementById("username").onblur = function(){
+				this.style.background = "";
+				//this.style.background = null;
+			}
+
+			//注意：
+			//background-color
+			//background
+			//backgroundColor
+
+			//后续事件继续补充
+
+
+
+			//7.DOM 事件监听器
+			//addEventListener() 方法
+			//语法:
+			//element.addEventListener(event, function, useCapture);
+			// 第一个参数是事件的类型（比如 "click" 或 "mousedown"）
+			// 第二个参数是当事件发生时我们需要调用的函数
+			// 第三个参数是布尔值，指定使用事件冒泡还是事件捕获。此参数是可选
+			//注意：请勿对事件使用 "on" 前缀；请使用 "click" 代替 "onclick"
+
+			//同时注意：onclick,监听器中的click事件，jQuery中的click三者的区别
+
+			
+
+
+
+			//添加当用户点击按钮时触发的事件监听器
+			document.getElementById("myButton").addEventListener("click",displayDate);
+			function displayDate(){
+				document.getElementById("p3").innerHTML = Date();
+			}
+			//removeEventListener() 删除事件监听器
+
 
 
 
