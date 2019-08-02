@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <!--
+        引入jQuery:
+        1.下载代码文件至本地项目中，引入。
+        2.从 CDN 中载入 jQuery
+    -->
+    <!-- <script type="text/javascript" src="js/jquery-1.8.3.js"></script> -->
+
+    <!--百度 CDN-->
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+   <p>如果你点我，我就会消失。</p>
+   <p>继续点我!</p>
+   <p>接着点我!</p>
+   <p class="test">测试</p>
+
+    <script>
+        $(document).ready(function(){
+            $("p").click(function(){
+                $(this).hide();
+            });
+        });
+
+        //一、jQuery 语法:通过 jQuery，您可以选取（查询，query） HTML 元素，并对它们执行"操作"（actions）。
+        //基础语法： $(selector).action();
+        // 美元符号定义 jQuery
+        // 选择符（selector）"查询"和"查找" HTML 元素
+        // jQuery 的 action() 执行对元素的操作
+        //实例:
+        // $(this).hide() - 隐藏当前元素
+        // $("p").hide() - 隐藏所有 <p> 元素
+        // $("p.test").hide() - 隐藏所有 class="test" 的 <p> 元素
+        // $("#test").hide() - 隐藏所有 id="test" 的元素
+        $(document).ready(function(){
+            $("p.test").click(function(){
+               $(this).hide();
+            });
+        });
+
+        //文档就绪事件
+        //为了防止文档在完全加载（就绪）之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作。如果在文档没有完全加载之前就运行函数，操作可能失败。
+
+        //两种jQuery 入口函数：
+        //1.将jQuery 函数位于一个 document ready 函数中
+        $(document).ready(function(){
+            // 开始写 jQuery 代码...
+        });
+        //2.简介写法
+        $(function(){
+            // 开始写 jQuery 代码...
+        })
+
+        //JavaScript 入口函数:
+        window.onload = function(){
+             // 执行代码
+        }
+
+        //jQuery 入口函数与 JavaScript 入口函数的区别：
+        //1.jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行;jQuery的入口函数可以写多个 并且按顺序执行
+        //2.JavaScript 的 window.onload 事件是等到所有内容，包括外部图片之类的文件加载完后，才会执行。
+
+        //二、jQuery 选择器
+        //jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。
+        //jQuery 选择器基于元素的 id、类、类型、属性、属性值等"查找"（或选择）HTML 元素。 它基于已经存在的 CSS 选择器
+        //jQuery 中所有选择器都以美元符号开头：$()。
+        
+
+
+    </script>
+</body>
+
+</html>
