@@ -9,50 +9,62 @@
         1.下载代码文件至本地项目中，引入。
         2.从 CDN 中载入 jQuery
     -->
-    <!-- <script type="text/javascript" src="js/jquery-1.8.3.js"></script> -->
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 
     <!--百度 CDN-->
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-</head>
+    <!-- <script src="https://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+</head> -->
 
 <body>
    <p>如果你点我，我就会消失。</p>
    <p>继续点我!</p>
    <p>接着点我!</p>
    <p class="test">测试</p>
+   <input type="text">
+   <div id="div">jQuery获取的对象不是DOM对象</div>
+
+   <div id="div1">DIV1</div>
+   <span id="span1">SAPN1</span>
+
+   <br>
+
+   <button id="btn1">点我隐藏DIV1</button>
+   <button id="btn2">点我隐藏</button>
+   <button id="btn3">点我隐藏所有元素</button>
+   <button id="btn4">点我将会使我消失</button>
+   
+
+   <h1 class="center">这个标题不受影响</h1>
+   <p class="center">这个段落居中对齐。</p>
+   <button id="btn5">点我</button>
 
     <script>
-        $(document).ready(function(){
-            $("p").click(function(){
-                $(this).hide();
-            });
-        });
-
         //一、jQuery 语法:通过 jQuery，您可以选取（查询，query） HTML 元素，并对它们执行"操作"（actions）。
-        //基础语法： $(selector).action();
-        // 美元符号定义 jQuery
-        // 选择符（selector）"查询"和"查找" HTML 元素
-        // jQuery 的 action() 执行对元素的操作
-        //实例:
+        //1.基础语法： $(selector).action();
+        //- 美元符号定义 jQuery
+        //- 选择符（selector）"查询"和"查找" HTML 元素
+        //- jQuery 的 action() 执行对元素的操作
+
+        //2.实例:
         // $(this).hide() - 隐藏当前元素
         // $("p").hide() - 隐藏所有 <p> 元素
         // $("p.test").hide() - 隐藏所有 class="test" 的 <p> 元素
         // $("#test").hide() - 隐藏所有 id="test" 的元素
         $(document).ready(function(){
             $("p.test").click(function(){
-               $(this).hide();
+               $("p").hide();
             });
         });
 
-        //文档就绪事件
+        //3.文档就绪事件
         //为了防止文档在完全加载（就绪）之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作。如果在文档没有完全加载之前就运行函数，操作可能失败。
 
         //两种jQuery 入口函数：
-        //1.将jQuery 函数位于一个 document ready 函数中
+        //1)将jQuery 函数位于一个 document ready 函数中
         $(document).ready(function(){
             // 开始写 jQuery 代码...
         });
-        //2.简介写法
+        //2)简介写法
         $(function(){
             // 开始写 jQuery 代码...
         })
@@ -62,15 +74,113 @@
              // 执行代码
         }
 
+        
         //jQuery 入口函数与 JavaScript 入口函数的区别：
-        //1.jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行;jQuery的入口函数可以写多个 并且按顺序执行
-        //2.JavaScript 的 window.onload 事件是等到所有内容，包括外部图片之类的文件加载完后，才会执行。
+        //1).jQuery 的入口函数是在 html 所有标签(DOM)都加载之后，就会去执行;jQuery的入口函数可以写多个 并且按顺序执行
+        //2).JavaScript 的 window.onload 事件是等到所有内容，包括外部图片之类的文件加载完后，才会执行。
 
+        //3.使用jQuery获取对象
+        //如上述的实例中通过 $(selector) 来获取对象：$(this)、$("p")、$("p.test")、$("#test")等等...
+        //然后直接.对元素需要执行的操作
+
+        //将获取的对象赋给变量：
+        // var $obj=$(选择器);（$obj中的$只是区分jQuery对象）
+        // var $obj=jQuery(选择器);
+        var $obj = $("input");
+        //alert($obj);//[object Object]
+        var $obj1 = jQuery("input");
+        // alert($obj1);//[object Object]
+
+        //4.jQuery获取对象的方式使用选择器获取，其语法和CSS中选择器的语法相同
+        //下面详细归纳下jQuery的选择器
+        
         //二、jQuery 选择器
         //jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。
         //jQuery 选择器基于元素的 id、类、类型、属性、属性值等"查找"（或选择）HTML 元素。 它基于已经存在的 CSS 选择器
-        //jQuery 中所有选择器都以美元符号开头：$()。
-        
+        //jQuery 中所有选择器都以美元符号开头：$()
+
+        // 选择器:          作用：
+        // $("div")        标签选择器(元素选择器)，获取所有div标签对象
+        // $("#div")       id选择器，获取id为div的对象
+        // $(".div")       类选择器，获取加载了div类样式的标签对象
+        // $("div img")    层叠式级联选择器，获取所有div标签中的img标签对象
+
+        //标签选择器(元素选择器)
+        //jQuery 元素选择器基于元素名选取元素。在页面中选取所有 <p> 元素:$("p")
+        //实例：
+        $(document).ready(function(){
+            $("p").click(function(){
+                alert("使用了标签选择器(元素选择器)");
+                $("p").hide();
+            });
+        });
+
+        //#id 选择器
+        //jQuery #id 选择器通过 HTML 元素的 id 属性选取指定的元素。
+        //页面中元素的 id 应该是唯一的，所以您要在页面中选取唯一的元素需要通过 #id 选择器。
+        //通过 id 选取元素语法如下：$("#test")
+        //实例：
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                alert("使用了id选择器");
+                $("#div1").hide();
+            });
+        });
+
+        //.class 选择器
+        //jQuery 类选择器可以通过指定的 class 查找元素。
+        //语法如下：$(".test")
+        //实例：
+        $(document).ready(function(){
+            $("#btn2").click(function(){
+                alert("使用了id选择器");
+                $(".test").hide();
+            });
+        });
+
+        //$("*")
+        $(document).ready(function(){
+            $("#btn3").click(function(){
+                alert("选取所有元素");
+                $("*").hide();
+            });
+        });
+
+        //$(this)
+        $(document).ready(function(){
+            $("#btn4").click(function(){
+                alert("选取当前HTML元素");
+                $(this).hide();
+            });
+        });
+
+        //$("p.center")
+        //选取 center 为 intro 的 <p> 元素
+        $(document).ready(function(){
+            $("#btn5").click(function(){
+                alert("选取 class 为 center 的 <p> 元素");
+                //jQuery css() 方法
+                $("p.center").css("text-align","center");
+            });
+        });
+
+        //jQuery获取的对象不是DOM对象
+        // $("#div1"):jQuery获取的对象是封装后的数组对象
+        //document.getElementById("div1"):获取的是dom对象
+        //alert( $("#div1")==document.getElementById("div1"));//false
+
+        //jQuery获取的对象是封装后的数组对象，可以使用jQuery的方法对其进行操作
+        //下面详细归纳下jQuery对象的基本方法和属性
+
+        //三、jQuery对象的基本方法和属性
+        //jQuery属性
+        //jQuery 事件方法
+        //jQuery 效果方法
+        //jQuery HTML / CSS 方法
+        //jQuery 遍历方法
+        //jQuery AJAX 方法
+        //jQuery 杂项方法
+
 
 
     </script>
