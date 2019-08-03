@@ -1,0 +1,111 @@
+/* CSS Document */
+body{
+background:url(images/main-bg-v5.jpg) no-repeat top; font-size:13px
+}
+#content{
+width:1000px;margin:auto; 
+}
+#head{
+background:url(images/main-top-v5.jpg); height:464px;
+}
+#head li{
+float:left;list-style:none; margin-top:25px;
+}
+#head li a{
+color:#CCCCCC;font-weight:bold;list-style:none;text-decoration:none; display:block; width:80px;
+}
+#head li a:hover{
+color:#1B9687
+}
+#head li div{
+margin-top:30px; margin-left:-10px; 
+}
+#head li div a{
+display:block;text-decoration:none;color:#CCCCCC;margin-top:10px;  width:80px; text-align:center;
+}
+#menu div{
+width:121px; height:108px; float:left
+}
+.loginFont{
+color:#00FFBF
+}
+.notice_menu{
+width:97px; height:43px; float:left; cursor:pointer;
+}
+.news-type{
+color:#9B9B9B;
+}
+.news-title{
+color:#FFFFFF;
+}
+#notice_table a{
+text-decoration:none; font-size:12px;
+}
+#notice_table a:hover{
+text-decoration:underline
+}
+.match_menu{
+ float:left; width:98px; height:60px; background-color:#EAEAEA; border-top:5px solid #C8C8C8; border-bottom:1px solid #C8C8C8;
+ text-align:center; line-height:60px; color:#666666; cursor:pointer;
+}
+.match_menu_over{
+ background-color:white; border-top:5px solid #01A282; border-bottom:1px solid white;
+
+}
+#match_title a {
+color:#01A282; text-decoration:none; font-weight:bold; font-size:20px;
+}
+#match_title a:hover{
+text-decoration:underline;
+}
+#match_title div{
+font-size:12px; color:#666666
+}
+#match_content a{
+text-decoration:none; color:#333333; font-size:12px;
+}
+#match_content a:hover{
+text-decoration:underline
+}
+.a_more{
+text-decoration:none; color:#333333;
+}
+.a_more:hover{
+text-decoration:underline
+}
+.custom_menu{
+height:40px; border-top:1px solid #C8C8C8; border-bottom:1px solid #C8C8C8; text-align:center; line-height:40px; cursor:pointer;
+}
+#custom a{
+text-decoration:none; color:#333333; font-size:12px;
+}
+#custom a:hover{
+text-decoration:underline
+}
+#warPart a{
+text-decoration:none; color:#333333; font-size:12px;
+}
+#warPart a:hover{
+text-decoration:underline;
+}
+#foot div{
+color:#333333; font-size:12px; text-align:center; margin-bottom:10px;
+}
+#foot a{
+text-decoration:none; color:#333333; font-size:12px; margin-left:15px; margin-right:15px;
+}
+#foot a:hover{
+text-decoration:underline
+}
+.half{
+position:relative; height:50px; background-color:black; top:85px; opacity:0.5; text-align:center; color:white; filter:alpha(opacity=50);
+}
+.overActive{
+position:absolute; background-color:#00A988; height:0px; width:185px; margin-top:135px; z-index:2; opacity:0.85; filter:alpha(opacity=85); display:none; color:white;
+}
+.overHero{
+background-color:#00A988; position:absolute; width:65px; height:65px; opacity:0.85; filter:alpha(opacity=85); color:white; font-weight:bold; font-size:12px; display:none; text-align:center; line-height:65px;
+}
+#headMenu7 div{
+font-size:12px; margin-top:0px;
+}
