@@ -20,11 +20,13 @@
 <body>
     <button id="but">点我获取运行的jQuery版本</button>
 
-    <p>如果你点我，我就会消失。</p>
+    <p>段落文本<span>这是span标签</span></p>
     <p>继续点我!</p>
     <p>接着点我!</p>
     <p class="test">测试</p>
-    <input type="text">
+
+    <input type="text" value="test">
+
     <div id="div">jQuery获取的对象不是DOM对象</div>
 
     <div id="div1">DIV1</div>
@@ -65,11 +67,11 @@
     <button id="btn12">使用html()方法设置HTML</button>
 
 <br>
-    <p class="test3">名称：<input type="text" id="txt" value="这是一个文本框"></p>
+    <!-- <p class="test3">名称：<input type="text" id="txt" value="这是一个文本框"></p> -->
     <button id="btn13">val-使用val()方法显示value属性</button>
     <button id="btn14">使用val()方法设置value属性</button>
 <br>
-    
+
     <ul id="ul1">
         <li>Coffee</li>
         <li>Milk</li>
@@ -78,17 +80,49 @@
         <li id="stop">apple</li>
         <li>orange</li>
     </ul>
-    <button id="btn15">使用each(callback)方法输出每个列表项的值-callback无参数</button>
-    <button id="btn16">使用each(callback)方法输出每个列表项的值-callback有选择器位置参数</button>
-    <button id="btn17">使用each(callback)方法输出每个列表项的值-callback有选择器位置和当前的元素两个参数</button>
-    <button id="btn18">each(callback)</button>
-    <span class="sp"></span>
+    <button id="btn15">使用each(callback)方法输出每个列表项的值-callback无参数</button><br>
+    <button id="btn16">使用each(callback)方法输出每个列表项的值-callback有选择器位置参数</button><br>
+    <button id="btn17">使用each(callback)方法输出每个列表项的值-callback有选择器位置和当前的元素两个参数</button><br>
+    <button id="btn18">each(callback)</button><br>
+    <span class="sp"></span><br>
 
 
+    <button id="btn19">jQuery对象和DOM对象的转换</button>
 
+    <p id="ii">哈哈</p>
+    <button id="btn20">哈哈</button>
 
+    <div id="box">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="button" id="btn" onclick="myFunction()" value="点我">
+    </div>
 
     <script>
+        //value属性-val()方法
+        function myFunction(){
+            //find() 返回被选元素的后代元素
+            //$(selector).find(filter)
+            var txt = $('#box').find(':text'); // 获取所有文本框
+            //jQuery :eq() 选择器
+            //$(":eq(index)")
+            alert("txt.eq(1):"+txt.eq(1));  //[object Object]-jQuery对象
+            alert("txt[0]:"+txt[0]);        //[object HTMLInputElement]-dom对象
+            var t1 = txt.eq(1).val();       //jquery的写法
+            var t2 = txt[0].value;          //JavaScript的写法
+            alert("t1:"+t1);
+            alert("t2:"+t2);
+            $(document).ready(function(){
+                $("p.test").click(function(){
+                $("p").hide();
+                });
+            });
+        }
+        
+
+        
+
         //一、jQuery 语法:通过 jQuery，您可以选取（查询，query） HTML 元素，并对它们执行"操作"（actions）。
         //1.基础语法： $(selector).action();
         //- 美元符号定义 jQuery
@@ -138,8 +172,15 @@
         // var $obj=jQuery(选择器);
         var $obj = $("input");
         //alert($obj);//[object Object]
-        var $obj1 = jQuery("input");
-        // alert($obj1);//[object Object]
+        //alert($obj.length);
+        //alert($obj.val());
+
+
+        //alert($obj[0].val());
+        //alert("文本框的值为："+$("#txt").val());
+
+        //var $obj1 = jQuery("input");
+        //alert($obj1);//[object Object]
 
         //4.jQuery获取对象的方式使用选择器获取，其语法和CSS中选择器的语法相同
         //下面详细归纳下jQuery的选择器
@@ -271,19 +312,100 @@
         //语法: $(selector).get(index) 
         //index 可选。规定要获取哪个匹配的元素（通过 index 编号）。
 
-        //get():获取DOM元素的数组??
-        //get(index):获取单个DOM元素??
+        //get():获取DOM元素的数组
+        //get(index):获取单个DOM元素
 
         $(document).ready(function(){
             $("#btn8").click(function(){
                 alert("get()方法");
                 alert("获取的DOM对象的数组:"+$("p").get());//[object HTMLParagraphElement],[object HTMLParagraphElement]...
                 alert("获取的单个DOM对象"+$("p").get(0));//[object HTMLParagraphElement]
-                alert("获取"+$("p"));//[object Object]???
+                alert("获取"+$("p"));//[object Object]
             });
         });
 
-        //3.text()/html()/val()
+        //jQuery对象和DOM对象的转换
+        //注意：
+        //1.js获取dom对象(元素)：document.getElementById("p");
+        //2.jQuery获取的不是dom对象(元素)：$("p") -jQuery获取的对象是封装后的数组对象
+        $(document).ready(function(){
+            $("#btn19").click(function(){
+                alert("获取的jQuery对象:"+$("p"));//[object Object]-jQuery对象
+                //既然是jQuery对象就可以使用jQuery对象的基本方法和属性
+                //获取jQuery对象长度
+                alert("获取的jQuery对象的长度:"+$("p").length);
+                //获取jQuery对象的值
+                //注意：
+                //只能通过text()、html()、val()获取jQuery对象的值
+                //一旦转换成dom对象就不能使用jQuery的方法了,如：$("p")[1].val()-->这个是完全错误的
+
+                //因为是数组对象，所以获取的值很多
+                alert("获取的jQuery对象的内容:"+$("p").text());
+                // alert("获取的jQuery对象的长度:"+$("p").val());
+                // alert("获取的jQuery对象的长度:"+$("p").val());
+
+
+
+                //jQuery对象转换为dom对象
+                //1.使用[index]
+                alert("获取的第一个dom对象："+$("p")[0]);//[object HTMLParagraphElement]
+                //2.使用get(index)
+                alert("获取的第一个dom对象："+$("p").get(0));//[object HTMLParagraphElement]
+                //3.get()-获取的dom对象的数组
+                alert("获取的dom对象的数组:"+$("p").get());//[object HTMLParagraphElement],[object HTMLParagraphElement]...
+                //alert("获取的dom对象的数组:"+$("p").get().length);
+
+                 //jQuery对象转换为dom对象后，取值必须用js的方法
+                alert("获取的第一个dom对象的值："+$("p")[0].innerHTML);//段落文本<span>这是span标签</span>
+                alert("获取的第一个dom对象的值："+$("p")[0].innerText);//段落文本这是span标签
+                alert("获取的第一个dom对象的值："+$("p")[0].textContent);//段落文本这是span标签
+                
+                //总结：
+                //javascript属性-jQuery方法
+
+                //1.innerHTML属性-html()方法
+                //获取节点内容：
+                //1)javascript: 对象.innerHTML; innerHTML会把节点包含的(文本 和 元素标签内容)都给抓取出来
+                //2)jQuery:     对象.html();
+                //设置节点内容(可以说是纯文本，也可以是html标签内容)
+                //1)javascript: 对象.innerHTML = "...";
+                //2)jQuery:     html(参数);
+                //如：
+                //对象.innerHTML = "这是<b>新设置</b>的内容，包括html标签:<a href='https://www.baidu.com/'>点我跳转</a>";
+                //对象.html("这是<b>新设置</b>的内容，包括html标签:<a href='https://www.baidu.com/'>点我跳转</a>");
+
+
+                //2.innerText属性-text()方法
+                //获取节点内容：
+                //1)javascript: 对象.innerText;  在JavaScript中，可以通过innerText方法，获取元素的纯文本内容
+                //2)jQuery:     对象.text();     这个方法只对文本起作用，在获取节点的内容时，会把html标签删除
+                //设置节点内容:
+                //1)javascript: 对象.innerText = "...";
+                //2)jQuery:     对象.text();
+                //注意：即使在内容里添加了html标签，也会被当做纯文本解析。
+                
+                //3.value属性-val()方法
+                //value是js中的属性，而val是jq方法
+                //val()类似于JavaScript中的value属性，可以用来设置和获取元素的值，无论元素是文本框、下拉列表还是单选框，它都可以返回元素的值，如果元素为多选，则返回一个包含所有选择的值的数组。
+                //见示例
+
+                //innerText与innerHtml区别？
+                
+            });
+        });
+
+        $(document).ready(function(){
+            $("#btn20").click(function(){
+                document.getElementById("ii").innerHTML = "这是<b>新设置</b>的内容，包括html标签:<a href='https://www.baidu.com/'>点我跳转</a>";
+            });
+        });
+
+
+        
+        
+        
+
+        //3.text()/html()/val() 
         // text() 方法设置或返回被选元素的文本内容。
         // 当该方法用于返回内容时，则返回所有匹配元素的文本内容（会删除 HTML 标记）。
         // 当该方法用于设置内容时，则重写所有匹配元素的内容。
@@ -404,6 +526,12 @@
                 });
             });
         });
+
+        //四、 jQuery和dom对象的转换
+
+
+
+
 
 
     </script>
