@@ -5,22 +5,34 @@
     <meta charset="utf-8" />
     <title>jQuery效果</title>
     <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-
+    <style>
+        #div1{
+            width: 130px;
+            height: 50px;
+            padding: 15px;
+            margin: 15px;
+            background-color: green;
+        }
+    </style>
 </head>
 <body>
     <p id="p1">单击消失</p>
     <p id="p2">双击消失</p>
-    <p id="p3">鼠标指针进入此处，会看到弹窗。</p>
-    <p id="p4">鼠标指针离开此处，会看到弹窗。</p>
+    <p id="p3">单击2s消失</p>
+    <div id="div1">隐藏及设置回调函数</div>
+    <button class="hidebtn">隐藏</button>
+<br>
+    <p id="p4">这是一个段落</p>
+    <button class="btn">显示/隐藏</button>
+
     <p id="p5">这是一个段落</p>
     <p id="p6">这是一个段落</p>
     <p id="p7">这是一个段落</p>
-    <p id="p8">这是一个段落</p>
-    <p id="p9">这是一个段落</p>
    
     <script>
         //一、jQuery 效果- 隐藏和显示
-
+        //1.jQuery hide() 和 show()
+        //通过 jQuery，您可以使用 hide() 和 show() 方法来隐藏和显示 HTML 元素：
         $(document).ready(function(){
             $("p#p1").click(function(){
                 $(this).hide();
@@ -28,15 +40,51 @@
             $("p#p2").dblclick(function(){
                 $(this).hide();
             });
+        });
 
+        //语法:
+        //$(selector).hide(speed,callback);
+        //$(selector).show(speed,callback);
+        //1)可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+        //2)可选的 callback 参数是隐藏或显示完成后所执行的函数名称
 
+        //下面的例子演示了带有 speed 参数的 hide() 方法：
+        $(document).ready(function(){
+            $("p#p3").click(function(){
+                $(this).hide(2000);
+            });
+        });
+
+        //下面的例子演示了带有 speed 参数的 hide() 方法，并使用回调函数：
+        //第二个参数是一个字符串，表示过渡使用哪种缓动函数。（译者注：jQuery自身提供"linear" 和 "swing"，其他可以使用相关的插件）
+        
+        $(document).ready(function(){
+            $(".hidebtn").click(function(){
+                $("#div1").hide(2000,"linear",function(){
+                    alert("Hide()方法已完成!");
+                });
+            });
         });
 
 
-        
+        //2.jQuery toggle()
+        //通过 jQuery，您可以使用 toggle() 方法来切换 hide() 和 show() 方法。
+        //显示被隐藏的元素，并隐藏已显示的元素：
+        $(document).ready(function(){
+            $(".btn").click(function(){
+                $("#p4").toggle();
+            });
+        });
 
-
-
+        //语法:
+        //$(selector).toggle(speed,callback);
+        //可选的 speed 参数规定隐藏/显示的速度，可以取以下值："slow"、"fast" 或毫秒。
+        //可选的 callback 参数是隐藏或显示完成后所执行的函数名称。
+        $(document).ready(function(){
+            $(".hidebtn").click(function(){
+                
+            });
+        });
 
 
     </script>
