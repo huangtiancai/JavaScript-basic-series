@@ -15,6 +15,13 @@
     <!-- <script src="https://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script> -->
     <!-- <script src="https://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script> -->
     <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script> -->
+    <style>
+        .img2Class {
+            width: 50px;
+            height: 60px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -99,6 +106,16 @@
         <input type="button" id="btn" onclick="myFunction()" value="点我">
     </div>
 
+    <p id="oo">dom对象转换为jQuery对象</p>
+    <button id="btn21">点我将dom对象转换为jQuery对象</button>
+
+<br>
+
+    <img id="img1" class="img1Class" style="width: 200px;height:200px" src="imgs/pic.jpg" target="_blank">
+    <img id="img2" class="img1Class" src="imgs/pic.jpg" target="_blank2">
+    <img id="img3" src="imgs/pic3.gif" width="284px" height="213px" alt="Pulpit Rock">
+    <input id="in" value="OK">
+    <button id="btn22">切换</button>
     <script>
         //value属性-val()方法
         function myFunction(){
@@ -170,20 +187,8 @@
         //将获取的对象赋给变量：
         // var $obj=$(选择器);（$obj中的$只是区分jQuery对象）
         // var $obj=jQuery(选择器);
-        var $obj = $("input");
-        //alert($obj);//[object Object]
-        //alert($obj.length);
-        //alert($obj.val());
-
-
-        //alert($obj[0].val());
-        //alert("文本框的值为："+$("#txt").val());
-
-        //var $obj1 = jQuery("input");
-        //alert($obj1);//[object Object]
 
         //4.jQuery获取对象的方式使用选择器获取，其语法和CSS中选择器的语法相同
-        //下面详细归纳下jQuery的选择器
         
         //二、jQuery 选择器
         //jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。
@@ -525,9 +530,143 @@
             });
         });
 
-        //四、 jQuery和dom对象的转换
+        //5.javascript和jQuery的基本方法的区别
+        //dom指某一个节点标签;jq指某一个jq标签对象
+
+        //1.取标签属性的值:
+        // dom.src
+        // jq[0].src
+        //设置标签属性的值:
+        // dom.src=""
+        // jq[0].src=""
+
+        //2.取/设置css样式:
+        //dom.style.属性=”值”
+        //Jq.css(“属性”,”值”)-单个样式   
+        //Jq.css({“属性”:”值”,”属性”:”值”,…..})-多个样式
+
+        //3.为节点添加类样式:
+        //dom.className=”类样式名”
+        //Jq.addClass(“类样式名”)
+
+        //4.取/设置
+        //dom.innerText;
+        //dom.innerHTML;
+        //dom.value;
+
+        //dom.innerText=”文本”;
+        //dom.innerHTML=”文本”;
+        //dom.value=””;
+
+        //jq.text();
+        //jq.html();
+        //jq.val();
+
+        //jq.text("文本");
+        //jq.html("文本/标签");
+        //jq.val("值");
+        
+        //5.属性操作(取/添加/删除)
+        //dom.getAttribute(“name”)
+        //dom.setAttribute(“name”,value)
+        //dom.reomveAttribute(“name”)
+
+        //Jq.attr(“name”)
+        //Jq.attr(“name”,”value”)
+        //Jq.removeAttr(“name”)
+
+        //获取属性
+        $(document).ready(function(){
+            $("#img1").click(function(){
+                //1.取标签属性的值
+                alert(document.getElementById("img1").src);//等同于alert($("#img1")[0].src); 
+                alert($("#img1")[0].src);
+
+                //2.取css样式
+                alert(document.getElementById("img1").style.width);//等同于alert($("#img1")[0].style.width);
+                alert($("#img1")[0].style.width);
+                //注意css的区别：
+                alert($("#img1").css("width"));
+
+                //3.取当前img的类名
+                alert(document.getElementById("img1").className);
+                alert($("#img1")[0].className);
+
+                //4.属性操作(取)
+                alert(document.getElementById("img1").getAttribute("target"));
+                alert($("#img1")[0].getAttribute("target"));
+                alert($("#img1").attr("target"));
+
+            });
+        });
+        //设置属性
+        $(document).ready(function(){
+            $("#btn22").click(function(){
+                //1.设置标签属性的值
+                //document.getElementById("img1").src = "imgs/pic1.jpg";
+                //$("#img1")[0].src = "imgs/pic1.jpg"
+
+                //2.设置css样式
+                //document.getElementById("img1").style.width = "400px";
+                //$("#img1")[0].style.width = "400px";
+                //注意css的区别：
+                //$("#img1").css("width","400px");
+                //$("#img1").css({"width":"400px","height":"500px"});
+                
+                //3.为节点添加类样式
+                //注意：style放在img内部添加，类样式无效
+                //document.getElementById("img2").className = "img2Class";
+                //$("#img2")[0].className = "img2Class";
+
+                //$("#img2").addClass("img2Class");
+
+                //4.属性操作(添加/删除)
+                //将普通文本框添设置按钮的类型属性
+                //document.getElementById("in").setAttribute("type","button");
+                //$("#in")[0].setAttribute("type","button");
+
+                //$("#img3").attr("width","500px");
+
+                //reomveAttribute
+                //document.getElementById("img3").removeAttribute("width");
+                //$("#img3")[0].removeAttribute("width");
+                $("#img3").removeAttr("width");
+
+            });
+        });
 
 
+
+
+        //四、jQuery和dom对象的转换
+        //将获取的对象赋给变量：
+        // var $obj=$(选择器);（$obj中的$只是区分jQuery对象）
+        // var $obj=jQuery(选择器);
+
+        //1.获取jQuery对象
+        var $obj = $("input");//获取的对象是jQuery对象--->赋值给变量$obj
+        //alert($obj);//[object Object]
+
+        //alert($obj.length);
+        //alert($obj.val());
+
+        //2.jQuery和dom对象的转换:jQuery-->dom-->jQuery
+        //$obj：jQuery对象
+        //1)jQuery对象转换为dom对象(使用[index]或get(index))
+        var obj = $obj[0];
+        //alert(obj);//[object HTMLInputElement]
+        //2)dom对象转换为jQuery对象
+        var $ob = $(obj);
+        //alert($ob);//[object Object]
+
+        //3.dom对象转换为jQuery对象:dom-->jQuery
+        $(document).ready(function(){
+            $("#btn21").click(function(){
+                var jObject = $(document.getElementById("oo"));
+                alert(document.getElementById("oo"));//[object HTMLParagraphElement]
+                alert("jObject:"+jObject);//[object Object]
+            });
+        });
 
 
 
