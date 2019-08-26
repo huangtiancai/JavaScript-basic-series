@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>JavaScript 函数定义</title>
+	</head>
+	<body>
+		<p id="p1"></p>
+		<input type="text" id="in1" value="">
+		<p id="p2"></p>
+
+
+		<script>
+			//1.函数声明(非匿名函数)
+			function functionName(parameters) {
+				//要执行的代码
+			}
+
+			//被声明的函数不会直接执行。它们被“保存供稍后使用”，将在稍后执行，当它们被调用时。
+
+			//实例
+			function myFunction(a,b){
+				return a*b;
+			}
+			//变量等于函数的返回值
+			var x = myFunction(3,4);
+
+			document.getElementById("p1").innerHTML = x;
+			document.getElementById("in1").value = x;
+
+
+
+			//2.函数表达式
+			//JavaScript 函数也可以使用表达式来定义;函数表达式可以在变量中存储：
+
+			//变量=函数（匿名函数=没有名称的函数-存放在变量中的函数不需要函数名。他们总是使用变量名调用）
+			var y = function(a,b){
+				return a*b;
+			};
+
+			//在变量中保存函数表达式之后，此变量可用作函数，通过函数调用
+			var z = y(2,5);
+			document.getElementById("p2").innerHTML = z;
+
+			//3.Function() 构造器
+			//函数也可以通过名为 Function() 的内建 JavaScript 函数构造器来定义。
+			var fun = new Function("a","b","return a*b");
+			var f = fun(3,5);
+			alert(f);
+
+
+
+
+		</script>
+
+	</body>
+</html>
