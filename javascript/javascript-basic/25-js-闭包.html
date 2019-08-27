@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>JavaScript 闭包</title>
+	</head>
+	<body>
+		<p id="p1"></p>
+		<script>
+			//JavaScript 变量可以是局部变量或全局变量。
+			//全局变量能够通过闭包实现局部（私有）
+			//私有变量可以用到闭包
+
+			//1.全局变量
+			//函数可以访问由函数内部定义的变量，如：
+			function myFunction() {
+				var a = 4;//在第一个实例中，a是一个局部变量,局部变量只能用于定义它函数内部。对于其他的函数或脚本代码是不可用的
+				b = 5;
+				return a * a;
+			}
+
+			//函数也可以访问函数外部定义的变量，如：
+			var a = 4;// 这个a 是一个 全局 变量-->在web页面中全局变量属于 window 对象-->全局变量可应用于页面上的所有脚本
+			function myFunction1() {
+				return a * a;
+			}
+
+			//全局和局部变量即便名称相同，它们也是两个不同的变量。修改其中一个，不会影响另一个的值。
+			//变量声明时如果不使用 var 关键字，那么它就是一个全局变量，即便它在函数内定义。
+
+			// 在function内部， 加var的是局部变量， 不加var的则是全局变量；
+			// 在function外部， 不管有没有使用var声明变量，都是全局变量，在function外部,var关键字一般可以省略，但是为了书写规范和维护方便以及可读性好，我个人不建议省略var关键字!
+			myFunction();
+			console("b:"+b);
+
+		</script>
+
+	</body>
+</html>
