@@ -101,12 +101,42 @@
 				var counter3 = 0;
 				return function () {return counter3 += 1;}
 			})();
+
 			function Fun1(){
 				document.getElementById("p4").innerHTML = add3();
 			}
+			//1.变量add3指定了函数自我调用的返回值
+			//2.自我调用函数只执行一次。设置计数器为 0。并返回函数表达式
+			//3.add3变量可以作为一个函数使用,并且它能够访问父作用域中的计数器-->JavaScript 闭包
+			//4.闭包指的是有权访问父作用域的函数，即使在父函数关闭之后
+
+			//闭包几种写法:
+			var add4 = (function(){
+				var count = 0;//外部访问的计数器，局部变量.
+				var fun = function(){
+						return ++count;
+					}
+				return fun;
+			})();
+
+			var add5 = (function(){
+				var count = 0;//外部访问的计数器，局部变量.
+				function plus(){
+					return ++count;
+				}
+			return plus;
+			})();
+
+
+			var add6 = (function(){
+				var count = 0;//外部访问的计数器，局部变量.
+				function plus(){
+					return ++count;
+				}
+			return plus;
+			})();
 
 			
-
 
 
 		</script>
